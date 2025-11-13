@@ -50,19 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCmYQ1HrVamHQN7fD2pP_PDeJKWC-fQ-wA',
-    appId: '1:431837789011:web:dcdd5bd84d456b21b13fa6',
-    messagingSenderId: '431837789011',
-    projectId: 'todolist-bc20f',
-    authDomain: 'todolist-bc20f.firebaseapp.com',
-    storageBucket: 'todolist-bc20f.firebasestorage.app',
+    apiKey: 'AIzaSyDr_wAfcNYgVaGMEpMWLiSgsoNi8fCiqTY',
+    appId: '1:1015065135139:web:3d2dd90d6eb87316634996',
+    messagingSenderId: '1015065135139',
+    projectId: 'ecommerce-app-2af04',
+    authDomain: 'ecommerce-app-2af04.firebaseapp.com',
+    storageBucket: 'ecommerce-app-2af04.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyByYPuVo9yiYxsM0uDMNXeSV8W7hHbb0vk',
-    appId: '1:431837789011:android:6e154ea8ec7b408eb13fa6',
-    messagingSenderId: '431837789011',
-    projectId: 'todolist-bc20f',
-    storageBucket: 'todolist-bc20f.firebasestorage.app',
+    apiKey: 'AIzaSyDszZChGj0zLkyClsmbqIyO1p24VSLA7ss',
+    appId: '1:1015065135139:android:f028f0e4b763c28b634996',
+    messagingSenderId: '1015065135139',
+    projectId: 'ecommerce-app-2af04',
+    storageBucket: 'ecommerce-app-2af04.firebasestorage.app',
   );
+
 }

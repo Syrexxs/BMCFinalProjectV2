@@ -1,8 +1,8 @@
-import 'package:todo_firebase_app/screens/home_screen.dart';
-import 'package:todo_firebase_app/screens/login_screen.dart';
+import 'package:ecommerce_app/screens/home_screen.dart';
+import 'package:ecommerce_app/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_firebase_app/screens/signup_screen.dart';
+
 
 class AuthWrapper extends StatelessWidget {
   const AuthWrapper({super.key});
@@ -17,7 +17,6 @@ class AuthWrapper extends StatelessWidget {
             body: Center(child: CircularProgressIndicator()),
           );
         }
-
         if (snapshot.hasData) {
           return const HomeScreen();
         }

@@ -1,5 +1,5 @@
-name: todo_firebase_app
-description: A simple to-do list app with Firebase
+name: ecommerce_app
+description: A ecommerce app with Firebase
 
 publish_to: 'none'
 
@@ -7,19 +7,22 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.9.2
+  sdk: ^3.8.1
 
 
 dependencies:
   flutter:
     sdk: flutter
-  shimmer: ^3.0.0
+  intl: ^0.19.0
+  google_fonts: ^6.2.1
 
+
+  cupertino_icons: ^1.0.8
   firebase_core: ^4.2.1
-  firebase_auth: ^6.1.2
-  cloud_firestore: ^6.1.0
   flutter_native_splash: 2.4.0
-  provider: ^6.1.5+1
+  firebase_auth: ^6.1.2
+  cloud_firestore: 6.0.3
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
@@ -30,11 +33,10 @@ dev_dependencies:
 
 
 flutter:
-
-
   uses-material-design: true
-assets: block
-  - assets/images/
+
+  assets:
+  - assets/image/
 
 
 flutter_native_splash:
@@ -42,9 +44,12 @@ flutter_native_splash:
   color: "#FFFFFF"
 
   # 2️⃣ Path to your splash image
-  image: assets/images/fragnance.png
+  image: assets/image/splash_logo.png
 
   android_12:
     color: "#FFFFFF"
-    image: assets/images/fragnance.png
+    image: assets/image/splash_logo.png
 
+  web:
+    color: "#FFFFFF"
+    image: assets/image/fragnance.png

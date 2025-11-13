@@ -1,65 +1,80 @@
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  final Map<String, dynamic> productData;
+  final String productName;
+  final double price;
+  final String imageUrl;
+  final double avgRating;
+  final int totalRatings;
   final VoidCallback onTap;
+  final VoidCallback? onRate;
 
   const ProductCard({
     super.key,
-    required this.productData,
+    required this.productName,
+    required this.price,
+    required this.imageUrl,
+    required this.avgRating,
+    required this.totalRatings,
     required this.onTap,
+    this.onRate,
   });
 
   @override
   Widget build(BuildContext context) {
-    final String name = productData['name']?.toString() ?? 'Unknown Item';
-    final double price = (productData['price'] is num)
-        ? (productData['price'] as num).toDouble()
-        : 0.0;
-    final String imageUrl = productData['imageUrl']?.toString() ?? '';
-
     return GestureDetector(
       onTap: onTap,
       child: Card(
-        color: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        elevation: 4,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // 🖼️ Product image
             Expanded(
-              child: ClipRRect(
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-                child: Image.network(
-                  imageUrl,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                  errorBuilder: (context, error, stackTrace) =>
-                  const Center(child: Icon(Icons.image_not_supported)),
+              flex: 6,
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Expanded(
+              flex: 4,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(productName,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16)),
+                    const SizedBox(height: 4),
+                    Text('₱$price',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 14)),
+                    const SizedBox(height: 4),
+                    Row(
+                      children: [
+                        ...List.generate(5, (index) {
+                          return Icon(
+                            index < avgRating.round()
+                                ? Icons.star
+                                : Icons.star_border,
+                            color: Colors.amber,
+                            size: 16,
+                          );
+                        }),
+                        const SizedBox(width: 4),
+                        Text('($totalRatings)'),
+                        const Spacer(),
+                        IconButton(
+                          icon: const Icon(Icons.rate_review, size: 18),
+                          onPressed: onRate,
+                        )
+                      ],
+                    ),
+                  ],
                 ),
               ),
-            ),
-
-            // 🏷️ Product name
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                name,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-              child: Text(
-                '₱${price.toStringAsFixed(2)}',
-                style: const TextStyle(color: Colors.deepPurple),
-              ),
-            ),
+            )
           ],
         ),
       ),
